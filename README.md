@@ -1,6 +1,6 @@
-# TM4C123 Zephyr Application
+# TM4C123 Zephyr Platform
 
-Out-of-tree Zephyr RTOS project targeting the **TI Tiva C Series TM4C123G LaunchPad** (`tm4c123gxl`).
+Out-of-tree Zephyr RTOS firmware platform targeting the **TI Tiva C Series TM4C123G LaunchPad** (`tm4c123gxl`).
 
 ---
 
