@@ -141,11 +141,23 @@ if [ ! -d "$ZEPHYR_SDK_INSTALL_DIR" ]; then
     exit 1
 fi
 
+# Flash helper function
+do_flash() {
+    info "Flashing target board: ${BOARD} using west flash..."
+    if ! west flash; then
+        echo ""
+        error "Flashing failed."
+        echo -e "${YELLOW}${BOLD}[HINT]${NC} If the error was 'LIBUSB_ERROR_ACCESS', run the one-time udev setup:"
+        echo -e "       ${BOLD}sudo ./setup-udev.sh${NC}"
+        echo ""
+        exit 1
+    fi
+    ok "Flashing successful!"
+}
+
 # Handle flash-only action
 if [ "$ACTION" = "flash_only" ]; then
-    info "Flashing target board: ${BOARD} using west flash..."
-    west flash
-    ok "Flashing completed."
+    do_flash
     exit 0
 fi
 
@@ -195,7 +207,5 @@ ok "Build successful!"
 # Flash if requested
 if [ "$FLASH_AFTER_BUILD" = true ]; then
     echo ""
-    info "Flashing binary to board ${BOARD}..."
-    west flash
-    ok "Flashing successful!"
+    do_flash
 fi
