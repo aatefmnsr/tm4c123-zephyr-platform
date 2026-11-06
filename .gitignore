@@ -1,0 +1,12 @@
+# Build and cache outputs
+build/
+.cache/
+
+# Editor and IDE metadata
+.vscode/
+.idea/
+*.swp
+*~
+
+# Compilation database
+compile_commands.json
