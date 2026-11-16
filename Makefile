@@ -1,4 +1,4 @@
-BOARD ?= tm4c123gxl
+BOARD ?= ek_tm4c123gxl
 BUILD_DIR ?= build
 
 .PHONY: all build clean pristine flash flash-only menuconfig guiconfig

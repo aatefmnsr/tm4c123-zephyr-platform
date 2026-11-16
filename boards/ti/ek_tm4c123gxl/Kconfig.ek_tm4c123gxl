@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_EK_TM4C123GXL
+	select SOC_TI_TM4C123GH6PM

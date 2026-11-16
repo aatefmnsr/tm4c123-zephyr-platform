@@ -1,0 +1,49 @@
+/*
+ * SPDX-License-Identifier: Apache-2.0
+ *
+ * TI Tiva C Series TM4C123G LaunchPad (EK-TM4C123GXL)
+ * Out-of-tree board definition
+ */
+
+/dts-v1/;
+
+#include <ti/tm4c123gh6pm.dtsi>
+#include <dt-bindings/pinctrl/tiva-c-pinctrl.h>
+
+/*
+ * Pin configuration node for UART0.
+ * Encoded with TIVA_C_PINMUX(port, pin, mux, type).
+ */
+&pinctrl {
+	uart0_rx_pa0: uart0_rx_pa0 {
+		pinmux = <TIVA_C_PINMUX(TIVA_C_PORT_A, 0, 1, TIVA_C_TYPE_UART)>;
+	};
+
+	uart0_tx_pa1: uart0_tx_pa1 {
+		pinmux = <TIVA_C_PINMUX(TIVA_C_PORT_A, 1, 1, TIVA_C_TYPE_UART)>;
+	};
+};
+
+/ {
+	compatible = "ti,ek-tm4c123gxl", "ti,tm4c123gh6pm";
+	model = "TI Tiva C Series TM4C123G LaunchPad Evaluation Kit (Out-of-Tree)";
+
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+	};
+
+	aliases {
+		uart-0 = &uart0;
+	};
+};
+
+/* UART0 is connected to the on-board ICDI virtual COM port (PA0/PA1) */
+&uart0 {
+	current-speed = <115200>;
+	pinctrl-0 = <&uart0_rx_pa0 &uart0_tx_pa1>;
+	pinctrl-names = "default";
+	status = "okay";
+};

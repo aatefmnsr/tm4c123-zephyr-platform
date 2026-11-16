@@ -4,7 +4,7 @@
 
 export ZEPHYR_BASE="$HOME/zephyrproject/zephyr"
 export ZEPHYR_SDK_INSTALL_DIR="$HOME/zephyr-sdk-1.0.1"
-export BOARD="tm4c123gxl"
+export BOARD="ek_tm4c123gxl"
 
 # Activate the Zephyr python virtual environment
 if [ -f "$HOME/zephyrproject/.venv/bin/activate" ]; then

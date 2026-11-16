@@ -23,7 +23,7 @@ warn()  { echo -e "${YELLOW}${BOLD}[WARN]${NC} $*"; }
 error() { echo -e "${RED}${BOLD}[ERROR]${NC} $*" >&2; }
 
 # Default configuration
-DEFAULT_BOARD="tm4c123gxl"
+DEFAULT_BOARD="ek_tm4c123gxl"
 BOARD="${BOARD:-$DEFAULT_BOARD}"
 ZEPHYR_PROJECT="${ZEPHYR_PROJECT:-$HOME/zephyrproject}"
 VENV_PATH="${ZEPHYR_PROJECT}/.venv"

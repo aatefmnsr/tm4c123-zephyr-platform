@@ -1,0 +1,24 @@
+# SPDX-License-Identifier: Apache-2.0
+
+mainmenu "TM4C123 Zephyr Application"
+
+# Source Zephyr's root Kconfig tree
+source "Kconfig.zephyr"
+
+menu "TM4C123 Application Configuration"
+
+config APP_WELCOME_BANNER
+	bool "Display custom welcome banner on boot"
+	default y
+	help
+	  When enabled, the application prints a formatted system banner
+	  detailing hardware platform, RTOS version, and CLI commands.
+
+config APP_ENABLE_DTS_INSPECTION_CMD
+	bool "Enable runtime Devicetree introspection shell command"
+	default y
+	help
+	  Exposes the 'tm4c dts' shell command to introspect hardware configuration
+	  and compile-time Devicetree properties from the interactive CLI.
+
+endmenu
