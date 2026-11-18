@@ -9,6 +9,7 @@
 
 #include <ti/tm4c123gh6pm.dtsi>
 #include <dt-bindings/pinctrl/tiva-c-pinctrl.h>
+#include <zephyr/dt-bindings/gpio/gpio.h>
 
 /*
  * Pin configuration node for UART0.
@@ -35,8 +36,53 @@
 		zephyr,shell-uart = &uart0;
 	};
 
+	leds {
+		compatible = "gpio-leds";
+		led_red: led_0 {
+			gpios = <&gpiof 1 GPIO_ACTIVE_HIGH>;
+			label = "User LED Red";
+		};
+		led_blue: led_1 {
+			gpios = <&gpiof 2 GPIO_ACTIVE_HIGH>;
+			label = "User LED Blue";
+		};
+		led_green: led_2 {
+			gpios = <&gpiof 3 GPIO_ACTIVE_HIGH>;
+			label = "User LED Green";
+		};
+	};
+
+	buttons {
+		compatible = "gpio-keys";
+		btn_sw1: button_0 {
+			gpios = <&gpiof 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "User Button SW1";
+		};
+		btn_sw2: button_1 {
+			gpios = <&gpiof 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "User Button SW2";
+		};
+	};
+
 	aliases {
 		uart-0 = &uart0;
+		led0 = &led_red;
+		led1 = &led_blue;
+		led2 = &led_green;
+		sw0 = &btn_sw1;
+		sw1 = &btn_sw2;
+	};
+
+	soc {
+		gpiof: gpio@40025000 {
+			compatible = "ti,tiva-c-gpio";
+			reg = <0x40025000 0x1000>;
+			interrupts = <30 3>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <5>;
+			status = "okay";
+		};
 	};
 };
 

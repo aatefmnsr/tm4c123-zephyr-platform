@@ -21,4 +21,11 @@ config APP_ENABLE_DTS_INSPECTION_CMD
 	  Exposes the 'tm4c dts' shell command to introspect hardware configuration
 	  and compile-time Devicetree properties from the interactive CLI.
 
+config APP_ENABLE_GPIO_DEMO
+	bool "Enable GPIO LED and Button control subsystem"
+	default y
+	help
+	  Initializes on-board RGB LEDs (PF1, PF2, PF3) and pushbuttons
+	  SW1 (PF4) and SW2 (PF0) with interrupt handlers and shell commands.
+
 endmenu
